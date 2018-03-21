@@ -6,22 +6,38 @@ function getHexString(hex) {
 }
 
 function getItems(style) {
+	var array = []
 	const fontFamily = {
-		"@name": "fontFamily",
+		"@name": "android:fontFamily",
 		"#text": style.fontFamily
 	}
-	const fontFace = {
-		"@name": "fontFace",
-		"#text": style.fontFace
-	}
-	const lineHeight = {
-		"@name": "android:lineHeight",
-		"#text": style.lineHeight
+
+	const sFontFamily = {
+		"@name": "app:fontFamily",
+		"#text": style.fontFamily
 	}
 
-	const letterSpacing = {
+	const fontFace = {
+		"@name": "android:fontStyle",
+		"#text": style.fontFace
+	}
+
+	const sFontFace = {
+		"@name": "app:fontStyle",
+		"#text": style.fontFace
+	}
+
+	const lineHeight = {
+		"@name": "android:lineHeight",
+		"#text": style.lineHeight+"sp"
+	}
+
+	if (typeof style.letterSpacing != 'undefined') {
+		const letterSpacing = {
 		"@name": "android:letterSpacing",
-		"#text": style.letterSpacing
+		"#text": style.letterSpacing+"sp"
+		}
+		array.push(letterSpacing)
 	}
 
 	const color = {
@@ -31,11 +47,9 @@ function getItems(style) {
 
 	const size = {
 		"@name": "android:textSize",
-		"#text": style.fontSize
+		"#text": style.fontSize+"sp"
 	}
-
-	var array = []
-	array.push(fontFamily, fontFace, lineHeight, letterSpacing, color, size)
+	array.push(sFontFamily, sFontFace, lineHeight, color, size)
 	return array
 }
 
