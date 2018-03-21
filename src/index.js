@@ -1,7 +1,10 @@
-/**
- * Export functions you want to work with, see documentation for details:
- * https://github.com/zeplin/zeplin-extension-documentation
- */
+import {
+    json2xml
+} from "./json2xml";
+
+import {
+	formatStyles
+} from "./androidify"
 
 function layer(context, layer) {
 	return {
@@ -14,23 +17,10 @@ function styleguideColors(context, layer) {
 	return `Colors: ${layer.name}`
 }
 
-function formatStyles(textStyles) {
-	var array = []
-	for (let style of textStyles) {
-		const object = {
-        	"style": style.name,
-        	"fontFamily": style.fontFamily,
-        	"fontFace": style.fontFace
-    	};
-    	array.push(object)
-	}
-	return JSON.stringify(array)
-}
-
 function styleguideTextStyles(context, textStyles) {
 	return {
-        code: formatStyles(textStyles),
-        language: "json"
+        code: json2xml(formatStyles(textStyles), " "),
+        language: "xml",
     };
 }
 
@@ -41,9 +31,9 @@ function exportStyleguideColors(context, layer) {
 
 function exportStyleguideTextStyles(context, textStyles) {
 	return {
-        code: formatStyles(textStyles),
-        language: "json",
-        filename: "styles"
+        code: json2xml(formatStyles(textStyles), " "),
+        language: "xml",
+        filename: "styles.xml"
     };
 }
 
