@@ -1,0 +1,20 @@
+{
+  "name": "android-text-styles",
+  "version": "0.1.0",
+  "description": "Sample extension description.",
+  "scripts": {
+    "start": "zem start",
+    "build": "zem build",
+    "clean": "zem clean",
+    "exec": "zem exec"
+  },
+  "zeplin": {
+    "displayName": "android-text-styles",
+    "projectTypes": [
+      "web"
+    ]
+  },
+  "dependencies": {
+    "zem": "^0.1.2"
+  }
+}
