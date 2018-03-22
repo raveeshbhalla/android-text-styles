@@ -7,13 +7,10 @@ import {
 } from "./androidify"
 
 function layer(context, layer) {
-	return {
-		code: formatStyles(layer.textStyles),
-		language: "json"
-	}
+
 }
 
-function styleguideColors(context, layer) {
+function styleguideColors(context, colors) {
 	return `Colors: ${layer.name}`
 }
 
@@ -24,7 +21,7 @@ function styleguideTextStyles(context, textStyles) {
     };
 }
 
-function exportStyleguideColors(context, layer) {
+function exportStyleguideColors(context, colors) {
 	return `${layer.name}`
 
 }
