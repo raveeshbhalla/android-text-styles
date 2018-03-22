@@ -5,26 +5,26 @@ function getHexString(hex) {
 		hex.b.toString(16))
 }
 
+function getRTLTextAlignment(alignment) {
+	if (alignment === "center") {
+		return "center"
+	} else if (alignment === "left") {
+		return "textStart"
+	} else {
+		return "textEnd"
+	}
+}
+
 function getItems(style) {
 	var array = []
 	const fontFamily = {
-		"@name": "android:fontFamily",
-		"#text": style.fontFamily
-	}
-
-	const sFontFamily = {
 		"@name": "app:fontFamily",
-		"#text": style.fontFamily
-	}
-
-	const fontFace = {
-		"@name": "android:fontStyle",
 		"#text": style.fontFace
 	}
 
-	const sFontFace = {
-		"@name": "app:fontStyle",
-		"#text": style.fontFace
+	const fontStyle = {
+		"@name": "android:textStyle",
+		"#text": style.fontStyle
 	}
 
 	const lineHeight = {
@@ -49,7 +49,12 @@ function getItems(style) {
 		"@name": "android:textSize",
 		"#text": style.fontSize+"sp"
 	}
-	array.push(sFontFamily, sFontFace, lineHeight, color, size)
+
+	const align = {
+		"@name": "android:textAlignment",
+		"#text": getRTLTextAlignment(style.textAlign)
+	}
+	array.push(fontFamily, fontStyle, lineHeight, color, size, align)
 	return array
 }
 

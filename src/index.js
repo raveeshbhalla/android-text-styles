@@ -33,7 +33,7 @@ function exportStyleguideTextStyles(context, textStyles) {
 	return {
         code: json2xml(formatStyles(textStyles), " "),
         language: "xml",
-        filename: "styles.xml"
+        filename: "textstyles.xml"
     };
 }
 
