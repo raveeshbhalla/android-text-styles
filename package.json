@@ -11,7 +11,7 @@
   "zeplin": {
     "displayName": "android-text-styles",
     "projectTypes": [
-      "web"
+      "android"
     ]
   },
   "dependencies": {

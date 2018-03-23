@@ -1,26 +1,37 @@
-/**
- * Export functions you want to work with, see documentation for details:
- * https://github.com/zeplin/zeplin-extension-documentation
- */
+import {
+    json2xml
+} from "./json2xml";
 
-function layer(context, selectedLayer) {
+import {
+	formatStyles
+} from "./androidify"
+
+function layer(context, layer) {
 
 }
 
 function styleguideColors(context, colors) {
-
+	return `Colors: ${layer.name}`
 }
 
-function styleguideTextStyles(context, colors) {
-
+function styleguideTextStyles(context, textStyles) {
+	return {
+        code: json2xml(formatStyles(textStyles), " "),
+        language: "xml",
+    };
 }
 
 function exportStyleguideColors(context, colors) {
+	return `${layer.name}`
 
 }
 
-function exportStyleguideTextStyles(context, colors) {
-
+function exportStyleguideTextStyles(context, textStyles) {
+	return {
+        code: json2xml(formatStyles(textStyles), " "),
+        language: "xml",
+        filename: "textstyles.xml"
+    };
 }
 
 function comment(context, text) {
@@ -29,9 +40,6 @@ function comment(context, text) {
 
 export default {
     layer,
-    styleguideColors,
     styleguideTextStyles,
-    exportStyleguideColors,
-    exportStyleguideTextStyles,
-    comment
+    exportStyleguideTextStyles
 };
